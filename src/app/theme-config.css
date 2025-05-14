@@ -1,0 +1,94 @@
+:root {
+  --color-primary: #1E3FD8;
+  --color-secondary: #E9BE00;
+  --color-background: #FFFFFF;
+  
+  /* Customize Radix Theme variables */
+  /* Custom crimson colors */
+  --crimson-9: #1E3FD8; /* Our primary blue as crimson-9 to maintain brand */
+  --crimson-8: #2D4CDE;
+  --crimson-7: #3D59E4;
+  --crimson-6: #4D66EA;
+  --crimson-5: #5D74F0;
+  --crimson-4: #6E81F5;
+  --crimson-3: #7E8FFB;
+  --crimson-2: #8E9CFF;
+  --crimson-1: #CDD2FF;
+  
+  /* Yellow as secondary color */
+  --yellow-9: #E9BE00;
+  --yellow-8: #F0CA33;
+  --yellow-7: #F5D452;
+  --yellow-6: #F8DE74;
+  --yellow-5: #FAE595;
+  --yellow-4: #FCECB5;
+  --yellow-3: #FDF2D4;
+  --yellow-2: #FEF9F0;
+  --yellow-1: #FEFDF9;
+
+  /* Custom mauve (gray) colors for text */
+  --mauve-12: #111111; /* Our text-primary */
+  --mauve-11: #444444; /* Our text-secondary */
+  --mauve-10: #525252;
+  --mauve-9: #737373;
+  --mauve-8: #A3A3A3;
+  --mauve-7: #D4D4D4;
+  --mauve-6: #E5E5E5;
+  --mauve-5: #F7F7F7;
+  --mauve-4: #FAFAFA;
+  --mauve-3: #FCFCFC;
+  --mauve-2: #FDFDFD;
+  --mauve-1: #FFFFFF;
+  
+  /* Typography customizations */
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  
+  --default-font-family: var(--font-public-sans);
+  --heading-font-family: var(--font-montserrat);
+  --font-family-sans: var(--font-ibm-plex-sans);
+  --font-family-mono: var(--font-ibm-plex-mono);
+}
+
+/* Dark mode variables */
+.dark-theme, [data-theme="dark"] {
+  --color-background: #121212;
+  
+  /* Custom crimson colors for dark mode */
+  --crimson-9: #5678FF; /* Lighter blue for dark mode */
+  --crimson-8: #4668F0;
+  --crimson-7: #3D59E4;
+  --crimson-6: #2D4CDE;
+  --crimson-5: #1E3FD8;
+  --crimson-4: #1A36BB;
+  --crimson-3: #152D9E;
+  --crimson-2: #112481;
+  --crimson-1: #0D1B64;
+  
+  /* Yellow for dark mode */
+  --yellow-9: #FFD533;
+  --yellow-8: #F0CA33;
+  --yellow-7: #E9BE00;
+  --yellow-6: #DAB100;
+  --yellow-5: #CBA400;
+  --yellow-4: #BC9700;
+  --yellow-3: #AD8A00;
+  --yellow-2: #9E7D00;
+  --yellow-1: #8F7000;
+  
+  /* Mauve colors for dark mode */
+  --mauve-1: #121212;
+  --mauve-2: #1E1E1E;
+  --mauve-3: #2A2A2A;
+  --mauve-4: #363636;
+  --mauve-5: #424242;
+  --mauve-6: #535353;
+  --mauve-7: #6E6E6E;
+  --mauve-8: #898989;
+  --mauve-9: #A4A4A4;
+  --mauve-10: #BFBFBF;
+  --mauve-11: #DADADA;
+  --mauve-12: #F5F5F5;
+} 

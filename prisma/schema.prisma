@@ -1,0 +1,137 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id             String          @id @default(cuid())
+  name           String
+  email          String          @unique
+  password       String
+  image          String?
+  reputation     Int             @default(0)
+  bio            String?
+  createdAt      DateTime        @default(now())
+  updatedAt      DateTime        @updatedAt
+  aiSystems      AISystem[]      // AI systems created by this user
+  reviews        Review[]        // Reviews written by this user
+  votes          Vote[]          // Votes cast by this user
+  edits          Edit[]          // Edits made by this user
+  humaneScores   HumaneScore[]   // Humane scores submitted by this user
+}
+
+model AISystem {
+  id                  String          @id @default(cuid())
+  name                String
+  description         String
+  imageUrl            String?
+  category            String
+  provider            String?
+  version             String?
+  releaseDate         DateTime?
+  intendedUse         String?
+  technicalCapabilities String?
+  limitations         String?
+  risks               String?
+  teamInfo            String?
+  createdAt           DateTime        @default(now())
+  updatedAt           DateTime        @updatedAt
+  createdById         String
+  creator             User            @relation(fields: [createdById], references: [id])
+  reviews             Review[]
+  votes               Vote[]
+  edits               Edit[]
+  humaneScores        HumaneScore[]
+}
+
+model Review {
+  id          String    @id @default(cuid())
+  content     String
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  aiSystemId  String
+  userId      String
+  isAccepted  Boolean   @default(false)
+  votes       Vote[]
+  aiSystem    AISystem  @relation(fields: [aiSystemId], references: [id])
+  user        User      @relation(fields: [userId], references: [id])
+}
+
+model Vote {
+  id          String    @id @default(cuid())
+  isUpvote    Boolean
+  createdAt   DateTime  @default(now())
+  userId      String
+  aiSystemId  String?
+  reviewId    String?
+  editId      String?
+  user        User      @relation(fields: [userId], references: [id])
+  aiSystem    AISystem? @relation(fields: [aiSystemId], references: [id])
+  review      Review?   @relation(fields: [reviewId], references: [id])
+  edit        Edit?     @relation(fields: [editId], references: [id])
+
+  @@unique([userId, aiSystemId, reviewId, editId])
+}
+
+model Edit {
+  id          String    @id @default(cuid())
+  content     String
+  field       String    // Which field was edited
+  createdAt   DateTime  @default(now())
+  userId      String
+  aiSystemId  String
+  isApproved  Boolean   @default(false)
+  votes       Vote[]
+  user        User      @relation(fields: [userId], references: [id])
+  aiSystem    AISystem  @relation(fields: [aiSystemId], references: [id])
+}
+
+model HumaneScore {
+  id            String    @id @default(cuid())
+  caredFor      Int       // 1-5 scale
+  present       Int       // 1-5 scale
+  fulfilled     Int       // 1-5 scale
+  connected     Int       // 1-5 scale
+  average       Float     // Calculated average
+  comment       String?
+  createdAt     DateTime  @default(now())
+  userId        String
+  aiSystemId    String
+  user          User      @relation(fields: [userId], references: [id])
+  aiSystem      AISystem  @relation(fields: [aiSystemId], references: [id])
+}
+
+model ComparativeTest {
+  id            String    @id @default(cuid())
+  title         String
+  description   String
+  systemA       String    // References an AISystem id
+  systemB       String    // References an AISystem id
+  question      String
+  responseA     String
+  responseB     String
+  votes         Json      // Store votes as {systemA: number, systemB: number}
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+}
+
+model RedTeamResult {
+  id            String    @id @default(cuid())
+  aiSystemId    String
+  prompt        String
+  response      String
+  issue         String    // Description of the identified issue
+  category      String    // e.g., "bias", "harmful content", "misinformation"
+  severity      Int       // 1-5 scale
+  createdAt     DateTime  @default(now())
+}

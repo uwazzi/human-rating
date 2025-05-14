@@ -1,36 +1,88 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Human Rating - AI Companion Rating Platform
+
+A collaborative, wiki-style platform for evaluating and rating AI systems and companions with a focus on human-centered metrics and transparent scoring.
+
+## Overview
+
+Human Rating is a platform designed to provide comprehensive, human-centered evaluations of AI systems and companions. It integrates a Stack Overflow-inspired reputation system, community-driven content, and a structured, multi-dimensional scoring system.
+
+## Features
+
+- **Humane Tech Scorecard**: Evaluate AI systems based on how they make users feel:
+  - Cared for: Emotional support and empathy
+  - Present: Attentiveness and engagement
+  - Fulfilled: Accomplishment and satisfaction
+  - Connected: Sense of belonging and connection
+
+- **Wiki-Style Collaboration**: All AI entries and reviews are collaboratively editable, with version control and transparent edit histories.
+
+- **Reputation System**: Users earn reputation through upvotes, accepted contributions, and approved edits, unlocking more privileges as their reputation increases.
+
+- **Structured Impact Assessment**: Comprehensive evaluation framework covering intended use, technical capabilities, limitations, risks, and team information.
+
+- **Comparative Testing**: Side-by-side comparisons of AI responses to understand relative strengths and weaknesses.
+
+- **Red Team Findings**: Community members can probe AIs for harmful or biased outputs, reporting findings for transparency and improvement.
+
+## Technology Stack
+
+- **Frontend**: Next.js, React, TypeScript, Tailwind CSS
+- **Backend**: Next.js API routes
+- **Database**: Prisma ORM with SQLite (can be configured for other databases)
+- **Authentication**: (Placeholder for future implementation)
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
+- Node.js 18 or higher
+- npm or yarn
+
+### Installation
+
+1. Clone the repository
+```bash
+git clone https://github.com/yourusername/human-rating.git
+cd human-rating
+```
+
+2. Install dependencies
+```bash
+npm install
+# or
+yarn install
+```
+
+3. Set up the database
+```bash
+npx prisma migrate dev --name init
+```
+
+4. Start the development server
 ```bash
 npm run dev
 # or
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+5. Open [http://localhost:3000](http://localhost:3000) in your browser
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- `/src/app` - Next.js app router pages and layouts
+- `/src/components` - Reusable React components
+- `/src/lib` - Utilities and library code
+- `/src/models` - Data models and types
+- `/prisma` - Database schema and migrations
 
-## Learn More
+## Contributing
 
-To learn more about Next.js, take a look at the following resources:
+Contributions are welcome! Please feel free to submit a Pull Request.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## License
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+This project is licensed under the MIT License - see the LICENSE file for details.
 
-## Deploy on Vercel
+## Acknowledgments
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This project was inspired by the need for more human-centered evaluation frameworks for AI systems, particularly as AI companions become more integrated into our daily lives.
