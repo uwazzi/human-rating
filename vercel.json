@@ -4,7 +4,7 @@
   "outputDirectory": ".next",
   "installCommand": "npm install",
   "framework": "nextjs",
-  "regions": ["auto"],
+  "regions": ["iad1"],
   "env": {
     "NEXTAUTH_URL": "@nextauth-url",
     "NEXTAUTH_SECRET": "@nextauth-secret",
