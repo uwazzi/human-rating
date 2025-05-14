@@ -86,3 +86,39 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 ## Acknowledgments
 
 This project was inspired by the need for more human-centered evaluation frameworks for AI systems, particularly as AI companions become more integrated into our daily lives.
+
+## Deployment
+
+### Deploying to Vercel
+
+1. Push your code to a Git repository (GitHub, GitLab, or Bitbucket)
+
+2. Sign up or log in to [Vercel](https://vercel.com)
+
+3. Click "Add New" > "Project"
+
+4. Select your Git repository
+
+5. Configure the project:
+   - Framework Preset: Next.js
+   - Build Command: Leave as default (uses the vercel.json configuration)
+   - Output Directory: Leave as default (.next)
+
+6. Add the following environment variables:
+   - `DATABASE_URL`: Your PostgreSQL connection string
+   - `NEXTAUTH_URL`: The URL of your deployed site
+   - `NEXTAUTH_SECRET`: A random string used for encryption
+
+7. Click "Deploy"
+
+### Database Setup for Production
+
+For production, the application uses PostgreSQL instead of SQLite. You can use Vercel Postgres or any other PostgreSQL provider.
+
+1. Set up a PostgreSQL database (Vercel Postgres, Supabase, Railway, etc.)
+
+2. Get your PostgreSQL connection string
+
+3. Set it as the `DATABASE_URL` environment variable in your Vercel project settings
+
+4. The database migration will run automatically during deployment

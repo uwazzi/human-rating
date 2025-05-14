@@ -1,0 +1,22 @@
+{
+  "version": 2,
+  "buildCommand": "prisma generate && next build",
+  "outputDirectory": ".next",
+  "installCommand": "npm install",
+  "framework": "nextjs",
+  "regions": ["auto"],
+  "env": {
+    "NEXTAUTH_URL": {
+      "description": "The URL of your deployed site for NextAuth",
+      "required": true
+    },
+    "NEXTAUTH_SECRET": {
+      "description": "A random string used to hash tokens, sign cookies and generate cryptographic keys",
+      "required": true
+    },
+    "DATABASE_URL": {
+      "description": "Your Prisma database connection string",
+      "required": true
+    }
+  }
+} 
