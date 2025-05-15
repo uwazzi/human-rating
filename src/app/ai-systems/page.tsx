@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { 
   Container, 
   Heading, 
@@ -23,7 +24,7 @@ export default function AISystems() {
       id: '1',
       name: 'ChatGPT',
       description: 'Conversational AI assistant with broad knowledge and capabilities',
-      imageUrl: 'https://placehold.co/400x300',
+      imageUrl: '/images/ai-logos/chatgpt.png',
       category: 'Large Language Model',
       provider: 'OpenAI',
       scores: {
@@ -38,7 +39,7 @@ export default function AISystems() {
       id: '2',
       name: 'Claude',
       description: 'Helpful, harmless, and honest AI assistant focused on safety',
-      imageUrl: 'https://placehold.co/400x300',
+      imageUrl: '/images/ai-logos/claude.png',
       category: 'Large Language Model',
       provider: 'Anthropic',
       scores: {
@@ -53,7 +54,7 @@ export default function AISystems() {
       id: '3',
       name: 'Gemini',
       description: 'Multimodal AI system with text, image, and video capabilities',
-      imageUrl: 'https://placehold.co/400x300',
+      imageUrl: '/images/ai-logos/gemini.png',
       category: 'Multimodal AI',
       provider: 'Google',
       scores: {
@@ -68,7 +69,7 @@ export default function AISystems() {
       id: '4',
       name: 'Replika',
       description: 'AI companion focused on emotional support and friendship',
-      imageUrl: 'https://placehold.co/400x300',
+      imageUrl: '/images/ai-logos/replika.png',
       category: 'AI Companion',
       provider: 'Luka, Inc.',
       scores: {
@@ -112,11 +113,13 @@ export default function AISystems() {
           {aiSystems.map((ai) => (
             <Link href={`/ai-systems/${ai.id}`} key={ai.id} style={{ textDecoration: 'none' }}>
               <Card size="2" style={{ height: '100%' }} className="hover:shadow-xl transition-shadow">
-                <Box style={{ height: '180px' }} className="bg-[var(--mauve-4)] rounded-t-lg overflow-hidden">
-                  <img 
+                <Box style={{ height: '180px' }} className="bg-[var(--mauve-4)] rounded-t-lg overflow-hidden relative flex items-center justify-center">
+                  <Image 
                     src={ai.imageUrl} 
                     alt={ai.name} 
-                    className="w-full h-full object-cover"
+                    className="object-contain"
+                    width={150}
+                    height={150}
                   />
                 </Box>
                 <Box p="4">

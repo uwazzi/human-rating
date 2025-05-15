@@ -14,8 +14,7 @@ import {
   Badge, 
   Select,
   TextField,
-  Separator,
-  Tabs
+  Separator
 } from '@radix-ui/themes';
 
 export default function CommunityPage() {

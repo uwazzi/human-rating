@@ -1,3 +1,7 @@
+'use client';
+
+import Image from 'next/image';
+
 export default function ProfilePage() {
   // Mock user data - in a real app, this would come from authentication and database
   const user = {
@@ -38,11 +42,13 @@ export default function ProfilePage() {
           
           <div className="p-6 md:p-8 -mt-20">
             <div className="flex flex-col md:flex-row gap-6 md:gap-10 items-center md:items-end">
-              <div className="relative">
-                <img 
+              <div className="relative w-32 h-32">
+                <Image 
                   src={user.image} 
                   alt={user.name} 
-                  className="w-32 h-32 rounded-full border-4 border-white object-cover"
+                  className="rounded-full border-4 border-white object-cover"
+                  fill
+                  sizes="128px"
                 />
                 <button className="absolute bottom-2 right-2 bg-gray-800 text-white p-1.5 rounded-full">
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4">

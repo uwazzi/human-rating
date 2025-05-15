@@ -1,15 +1,23 @@
-import Link from 'next/link';
+'use client';
 
-export default function AISystemPage({ params }: { params: { id: string } }) {
+import Link from 'next/link';
+import Image from 'next/image';
+import { useParams } from 'next/navigation';
+
+export default function AISystemPage() {
+  // Get params using the useParams hook from Next.js
+  const params = useParams();
+  const id = params.id as string;
+  
   // Placeholder data - in a real app, this would come from the database
   const ai = {
-    id: params.id,
-    name: params.id === '1' ? 'ChatGPT' : params.id === '2' ? 'Claude' : params.id === '3' ? 'Gemini' : 'Replika',
+    id: id,
+    name: id === '1' ? 'ChatGPT' : id === '2' ? 'Claude' : id === '3' ? 'Gemini' : 'Replika',
     description: 'A powerful AI assistant designed to be helpful, harmless, and honest. This system can understand and generate human-like text, assist with various tasks, and provide information across a wide range of topics.',
     longDescription: 'ChatGPT is an advanced AI language model developed by OpenAI. It uses a transformer-based neural network architecture to generate coherent and contextually relevant text responses to user queries. The model has been trained on a diverse corpus of internet text, enabling it to engage in conversations, answer questions, provide explanations, assist with writing tasks, and more. ChatGPT aims to be helpful, harmless, and honest in its interactions, making it suitable for a wide range of applications.',
-    imageUrl: 'https://placehold.co/800x400',
+    imageUrl: `/images/ai-logos/${id === '1' ? 'chatgpt' : id === '2' ? 'claude' : id === '3' ? 'gemini' : 'replika'}.png`,
     category: 'Large Language Model',
-    provider: 'OpenAI',
+    provider: id === '1' ? 'OpenAI' : id === '2' ? 'Anthropic' : id === '3' ? 'Google' : 'Luka, Inc.',
     version: '4.0',
     releaseDate: '2023-03-15',
     scores: {
@@ -92,11 +100,13 @@ export default function AISystemPage({ params }: { params: { id: string } }) {
         </nav>
 
         <div className="bg-white rounded-lg shadow-md overflow-hidden mb-8">
-          <div className="relative h-64 bg-gray-200">
-            <img 
+          <div className="relative h-64 bg-gray-200 flex items-center justify-center">
+            <Image 
               src={ai.imageUrl} 
               alt={ai.name} 
-              className="w-full h-full object-cover"
+              className="object-contain"
+              width={200}
+              height={200}
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
               <div className="p-6 text-white">
@@ -123,7 +133,7 @@ export default function AISystemPage({ params }: { params: { id: string } }) {
                 Edit Page
               </button>
               <Link 
-                href={`/ai-systems/${params.id}/rate`}
+                href={`/ai-systems/${id}/rate`}
                 className="px-4 py-2 bg-blue-600 rounded-md text-white flex items-center gap-2 hover:bg-blue-700"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
