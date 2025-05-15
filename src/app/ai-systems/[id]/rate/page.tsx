@@ -1,7 +1,14 @@
+'use client';
+
 import Link from 'next/link';
+import { useParams } from 'next/navigation';
 import RatingForm from '@/components/RatingForm';
 
-export default function RateAISystem({ params }: { params: { id: string } }) {
+export default function RateAISystem() {
+  // Get params using the useParams hook from Next.js
+  const params = useParams();
+  const id = params.id as string;
+
   // In a real app, you would fetch the AI system details from your database
   const aiSystemNames: Record<string, string> = {
     '1': 'ChatGPT',
@@ -10,14 +17,14 @@ export default function RateAISystem({ params }: { params: { id: string } }) {
     '4': 'Replika'
   };
 
-  const aiSystemName = aiSystemNames[params.id] || 'Unknown AI System';
+  const aiSystemName = aiSystemNames[id] || 'Unknown AI System';
 
   return (
     <main className="min-h-screen p-6 bg-gray-50">
       <div className="max-w-3xl mx-auto">
         <nav className="mb-6">
           <Link 
-            href={`/ai-systems/${params.id}`} 
+            href={`/ai-systems/${id}`} 
             className="text-blue-600 hover:text-blue-800 flex items-center gap-1"
           >
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
@@ -40,7 +47,7 @@ export default function RateAISystem({ params }: { params: { id: string } }) {
             </div>
             
             <RatingForm 
-              aiSystemId={params.id} 
+              aiSystemId={id} 
               aiSystemName={aiSystemName} 
             />
           </div>
